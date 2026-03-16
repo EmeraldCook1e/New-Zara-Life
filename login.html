@@ -1,102 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - My Website</title>
+    <meta charset="UTF-8">
+    <title>Login - Zara’s Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* [Note] Styling the background and centering the login box */
+        body { 
+            background: #FDFBF6; /* Cream Background */
+            font-family: 'Quicksand', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
 
-<!-- Import Google Fonts to match index.html -->
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+        /* [Note] The container for the login form */
+        .login-box { 
+            background: white; 
+            border: 4px dashed #C4B0FF; /* Soft Violet Border */
+            border-radius: 30px; 
+            padding: 40px; 
+            text-align: center; 
+            width: 320px; 
+            box-shadow: 0 8px 20px rgba(163, 177, 138, 0.2); 
+        }
 
-<style>
-/* Page background and fonts */
-body {
-  background:#f7efe3; /* cream background */
-  font-family:'Quicksand', sans-serif;
-  margin:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
+        h2 { font-family: 'Fredoka', sans-serif; color: #3a2b5c; }
+        
+        /* [Note] Styling the input field and button */
+        input { 
+            width: 80%; padding: 12px; border-radius: 15px; 
+            border: 2px solid #A3B18A; /* Sage Green Border */
+            margin-bottom: 15px; outline: none; 
+        }
 
-/* Login box */
-.wrapper {
-  background:#ffffff;
-  border:6px solid #bfa6ff; /* soft purple border */
-  border-radius:30px;
-  padding:40px 30px;
-  text-align:center;
-  width:350px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+        button { 
+            background: #A3B18A; color: white; border: none; 
+            padding: 12px 30px; border-radius: 15px; font-weight: bold; 
+            cursor: pointer; transition: 0.3s; 
+        }
 
-/* Header text */
-h2 {
-  font-family:'Fredoka', sans-serif;
-  font-size:28px;
-  color:#3a2b5c;
-  margin-bottom:15px;
-}
-
-/* Password input */
-input[type="password"] {
-  padding:12px;
-  width:80%;
-  margin:10px 0;
-  border-radius:15px;
-  border:2px solid #d6c8ff;
-  font-size:16px;
-  text-align:center;
-}
-
-/* Login button */
-button {
-  padding:12px 25px;
-  background:#8a2be2; /* purple button */
-  color:white;
-  border:none;
-  border-radius:15px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:16px;
-  margin-top:10px;
-}
-
-/* Button hover effect */
-button:hover {
-  background:#6f1db5;
-}
-
-/* Optional small text */
-p {
-  color:#6b5a95;
-  font-size:14px;
-  margin-top:15px;
-}
-</style>
+        button:hover { background: #C4B0FF; } /* Changes to Violet on hover */
+    </style>
 </head>
-
 <body>
-<div class="wrapper">
-  <h2>Enter Password to Access Site</h2>
-  <input type="password" id="password" placeholder="Password">
-  <br>
-  <button onclick="checkPassword()">Enter</button>
-  <p>Only authorized users can access this page.</p>
-</div>
 
-<script>
-function checkPassword() {
-  const pw = document.getElementById('password').value;
-  const correctPw = "Zara1234"; // <-- Replace with your password
-  if(pw === correctPw) {
-    sessionStorage.setItem('loggedIn','true'); // remember login
-    window.location.href = "index.html";       // redirect to main page
-  } else {
-    alert("Incorrect password!");
-  }
-}
-</script>
+    <div class="login-box">
+        <h2>You Found Me!</h2>
+        <p>Zara’s Life ♪(´▽｀)</p>
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+        <br>
+        <button onclick="login()">Enter</button>
+    </div>
+
+    <script>
+        // [Note] This function checks the password
+        function login() {
+            const pass = document.getElementById('passwordInput').value;
+            if(pass === "zara") { // You can change "zara" to any password you want
+                sessionStorage.setItem('isLoggedIn', 'true'); // Saves the 'key' in the browser
+                window.location.href = "index.html"; // Redirects to your main page
+            } else {
+                alert("Incorrect password!");
+            }
+        }
+    </script>
 </body>
 </html>
