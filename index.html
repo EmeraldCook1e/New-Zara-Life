@@ -4,118 +4,215 @@
     <meta charset="UTF-8">
     <title>Zara's Life - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        /* [Note] Creating color variables to keep things consistent */
-        :root { 
-            --sage: #A3B18A; 
-            --violet: #C4B0FF; 
-            --cream: #FDFBF6; 
-            --dark: #3a2b5c; 
+        :root {
+            --sage: #A3B18A;
+            --violet: #C4B0FF;
+            --cream: #FDFBF6;
+            --dark-brown: #5c4a3a;
+            --board-brown: #a67c52;
+            --tab-tan: #b08d6d;
         }
 
-        body { background-color: var(--cream); font-family: 'Quicksand', sans-serif; display: flex; justify-content: center; padding: 40px 20px; }
+        body {
+            background-color: var(--cream);
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 100px 20px 50px;
+            margin: 0;
+        }
+
+        /* [Note] The main brown frame that holds everything together */
+        .board {
+            background: var(--board-brown);
+            border: 6px solid var(--dark-brown);
+            border-radius: 60px;
+            width: 900px;
+            padding: 15px;
+            position: relative;
+        }
+
+        /* [Note] The colored tabs at the very top (Sage and Tan) */
+        .scallop-container {
+            position: absolute;
+            top: -22px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        .scallop {
+            width: 80px;
+            height: 45px;
+            border: 4px solid var(--dark-brown);
+            border-radius: 0 0 40px 40px;
+        }
+        .scallop.tan { background: var(--tab-tan); }
+        .scallop.green { background: var(--sage); }
+
+        /* [Note] The "Welcome" banner floating at the top center */
+        .welcome-header {
+            background: var(--tab-tan);
+            border: 4px solid var(--dark-brown);
+            border-radius: 30px;
+            width: 380px;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        /* [Note] The inner cream layer with the dashed border */
+        .inner-paper {
+            background: var(--cream);
+            border: 4px dashed white;
+            border-radius: 50px;
+            padding: 30px;
+        }
+
+        /* [Note] Navigation Bar using Icons instead of text */
+        .nav-icons {
+            display: flex;
+            gap: 45px;
+            background: white;
+            padding: 12px 45px;
+            border-radius: 30px;
+            width: fit-content;
+            margin-bottom: 25px;
+        }
+        .nav-icons i { font-size: 24px; color: var(--sage); }
+        .nav-icons i.violet { color: var(--violet); }
+
+        /* [Note] The Sage-colored header for "home + about" */
+        .main-header {
+            background: var(--sage);
+            border-radius: 35px;
+            padding: 25px;
+            color: white;
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .main-header h1 { font-family: 'Fredoka', sans-serif; font-size: 38px; margin: 0; }
         
-        /* [Note] The main frame of the website */
-        .main-card { 
-            background: white; 
-            border: 8px solid var(--sage); 
-            border-radius: 40px; 
-            max-width: 850px; 
-            padding: 25px; 
+        /* [Note] The dotted violet circle on the header */
+        .miffy-deco-circle {
+            position: absolute;
+            right: 25px; top: 15px;
+            width: 90px; height: 90px;
+            background: white;
+            border-radius: 50%;
+            background-image: radial-gradient(var(--violet) 3px, transparent 3px);
+            background-size: 14px 14px;
         }
 
-        /* [Note] Navigation bar with the icons you requested */
-        .top-nav { 
-            display: flex; justify-content: space-around; 
-            border: 2px dashed var(--violet); 
-            border-radius: 20px; padding: 10px; margin-bottom: 20px; 
-        }
-        .nav-item { font-size: 22px; font-weight: bold; color: var(--sage); display: flex; align-items: center; gap: 8px; }
-
-        /* [Note] Large header box */
-        .header { 
-            background: var(--sage); color: white; 
-            border-radius: 20px; padding: 20px; margin-bottom: 20px; 
-        }
-        .header h1 { font-family: 'Fredoka', sans-serif; margin: 0; font-size: 32px; }
-
-        /* [Note] Creating the 3-column grid layout */
-        .content-grid { 
-            display: grid; 
-            grid-template-columns: 200px 1fr 1fr; 
-            gap: 20px; 
+        /* [Note] The 3-Column Grid setup */
+        .grid {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr;
+            gap: 20px;
         }
 
-        /* [Note] Styling the sidebar buttons */
-        .sidebar-btn { 
-            display: block; background: var(--sage); color: white; 
-            padding: 12px; margin-bottom: 10px; border-radius: 15px; 
-            text-decoration: none; text-align: center; font-weight: bold; 
-        }
-        .sidebar-btn:hover { background: var(--violet); }
-
-        /* [Note] The text boxes (About and Interests) */
-        .info-bubble { 
-            background: #F9F7FF; border: 2px solid var(--violet); 
-            border-radius: 20px; padding: 15px; font-size: 14px; line-height: 1.5;
+        /* [Note] Styling the bunny images to have thick white borders */
+        .bunny-img {
+            width: 100%;
+            border-radius: 25px;
+            border: 5px solid white;
+            margin-bottom: 15px;
         }
 
-        .section-title { 
-            display: flex; align-items: center; gap: 10px; 
-            font-family: 'Fredoka', sans-serif; font-size: 20px; color: var(--sage); 
-            margin-bottom: 10px;
+        /* [Note] Sidebar button styling */
+        .side-btn {
+            display: flex; align-items: center; gap: 12px;
+            background: var(--dark-brown); color: white; padding: 12px 15px;
+            margin-bottom: 10px; border-radius: 18px; text-decoration: none;
+            font-weight: bold; font-size: 14px;
+        }
+        .side-btn:hover { background: var(--violet); }
+
+        /* [Note] The info bubbles for text and lists */
+        .bubble {
+            background: #fffdfb;
+            border: 3px solid var(--violet);
+            border-radius: 25px;
+            padding: 20px;
+            font-size: 15px;
+            color: var(--dark-brown);
+        }
+        .label-row {
+            display: flex; align-items: center; gap: 10px;
+            font-family: 'Fredoka', sans-serif; font-size: 22px;
+            color: var(--sage); margin-bottom: 12px;
+        }
+        .label-circle {
+            background: var(--sage); color: white; width: 32px; height: 32px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
         }
 
-        /* [Note] The small 'a' and 'b' circles */
-        .circle-num { 
-            background: var(--sage); color: white; width: 28px; height: 28px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-size: 14px; font-weight: bold;
-        }
-
-        .footer { text-align: center; margin-top: 25px; color: var(--violet); font-weight: bold; }
+        .footer { text-align: center; color: white; font-family: 'Fredoka', sans-serif; font-size: 24px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="main-card">
-        
-        <div class="top-nav">
-            <div class="nav-item">👤 one</div>
-            <div class="nav-item" style="color: var(--violet);">📖 two</div>
-            <div class="nav-item" style="color: var(--violet);">🤍 three</div>
+<div class="board">
+    <div class="scallop-container">
+        <div class="scallop tan"></div><div class="scallop green"></div>
+        <div class="scallop tan" style="margin-left: auto;"></div><div class="scallop green"></div>
+    </div>
+
+    <div class="welcome-header">
+        <h2 style="margin:0; font-family:'Fredoka'">Welcome!</h2>
+        <span style="font-size:14px; opacity:0.9;">subheader here ♪(´▽｀ )</span>
+    </div>
+
+    <div class="inner-paper">
+        <div class="nav-icons">
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-book-open violet"></i>
+            <i class="fa-solid fa-bars violet"></i>
         </div>
 
-        <div class="header">
+        <div class="main-header">
+            <div class="miffy-deco-circle"></div>
             <h1>ε home + about з</h1>
-            <p>Have a look around!</p>
-            <div style="display: flex; gap: 10px; font-size: 12px;">
-                <span style="background:white; color:var(--sage); padding:4px 10px; border-radius:8px;">status: OPEN</span>
-                <span style="background:white; color:var(--sage); padding:4px 10px; border-radius:8px;">last updated: 0/00/00</span>
+            <p style="margin: 10px 0;">Have a look around! DM @user for any questions.</p>
+            <div style="display:flex; gap:10px;">
+                <span style="background:white; color:var(--sage); padding:5px 15px; border-radius:12px; font-weight:bold; font-size:11px;">status: OPEN</span>
+                <span style="background:white; color:var(--sage); padding:5px 15px; border-radius:12px; font-weight:bold; font-size:11px;">last updated: 0/00/00</span>
             </div>
         </div>
 
-        <div class="content-grid">
+        <div class="grid">
             <div>
-                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=music" style="width:100%; border-radius:15px; margin-bottom:10px;">
-                <a href="music.html" class="sidebar-btn">🎵 Music</a>
-                <a href="crochet.html" class="sidebar-btn">🧶 Crochet</a>
-                <a href="plushies.html" class="sidebar-btn">🧸 Plushies</a>
+                <img src="IMG_2765.jpeg" class="bunny-img" alt="Star Bunny">
+                <img src="IMG_2766.jpeg" class="bunny-img" alt="Flower Bunny">
+                
+                <a href="music.html" class="side-btn"><i class="fa-solid fa-music"></i> Music</a>
+                <a href="crochet.html" class="side-btn"><i class="fa-solid fa-scissors"></i> Crochet</a>
+                <a href="plushies.html" class="side-btn"><i class="fa-solid fa-paw"></i> Plushies</a>
             </div>
 
             <div>
-                <div class="section-title"><div class="circle-num">a</div> You found me! ✨</div>
-                <div class="info-bubble">
+                <div class="label-row"><div class="label-circle">a</div> Title Here ✨</div>
+                <div class="bubble">
                     This is a website I made for fun about my interests and I thought it would be nice to explain my interests and I got bored :).
                 </div>
-                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=book" style="width:100%; border-radius:15px; margin-top:15px;">
+                <img src="IMG_2764.jpeg" class="bunny-img" style="margin-top:20px;">
             </div>
 
             <div>
-                <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=heart" style="width:100%; border-radius:15px; margin-bottom:15px;">
-                <div class="section-title"><div class="circle-num" style="background:var(--violet)">b</div> What could be included 🌸</div>
-                <div class="info-bubble" style="border-color: var(--sage);">
-                    <ul style="padding-left: 18px; margin: 0;">
+                <img src="IMG_2767.jpeg" class="bunny-img" style="margin-bottom:20px;">
+                
+                <div class="label-row"><div class="label-circle" style="background:var(--violet)">b</div> Title Here 🌸</div>
+                <div class="bubble" style="border-color: var(--sage);">
+                    <ul style="padding-left: 20px; margin: 0; font-weight: 600;">
                         <li>f1</li>
                         <li>books</li>
                         <li>myself</li>
@@ -126,15 +223,17 @@
                 </div>
             </div>
         </div>
-
-        <div class="footer">hehe</div>
     </div>
 
-    <script>
-        // [Note] Security check: redirects to login if they didn't enter the password
-        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = "login.html";
-        }
-    </script>
+    <div class="footer">carrd by xiu.carrd.co</div>
+</div>
+
+<script>
+    /* [Note] Security check: if you haven't typed "zara" in the login file, you can't stay here! */
+    if (sessionStorage.getItem('auth') !== 'true') {
+        window.location.href = "login.html";
+    }
+</script>
+
 </body>
 </html>
