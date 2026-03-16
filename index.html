@@ -169,7 +169,7 @@
 
     <div class="welcome-header">
         <h2 style="margin:0; font-family:'Fredoka'">Welcome!</h2>
-        <span style="font-size:14px; opacity:0.9;">subheader here ♪(´▽｀ )</span>
+        <span style="font-size:14px; opacity:0.9;">Zara’s life ♪(´▽｀ )</span>
     </div>
 
     <div class="inner-paper">
@@ -229,8 +229,8 @@
 </div>
 
 <script>
-    /* [Note] Security check: if you haven't typed "zara" in the login file, you can't stay here! */
-    if (sessionStorage.getItem('auth') !== 'true') {
+    // [Note] Changed to localStorage to match your fixed login.html
+    if (localStorage.getItem('zara_auth') !== 'true') {
         window.location.href = "login.html";
     }
 </script>
