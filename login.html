@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body { background-color: #fff8f0; font-family: sans-serif; text-align: center; padding-top: 100px; }
+    input { padding: 10px; margin: 5px; }
+    button { padding: 10px 20px; background-color: #8a2be2; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Enter Password to Access Site</h2>
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="checkPassword()">Enter</button>
+
+  <script>
+    function checkPassword() {
+      const pw = document.getElementById('password').value;
+      const correctPw = "1234"; // <-- Change this to your password
+      if(pw === correctPw) {
+        window.location.href = "index.html"; // <-- Your main page
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+  </script>
+</body>
+</html>
