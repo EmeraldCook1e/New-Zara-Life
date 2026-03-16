@@ -5,235 +5,85 @@
     <title>Zara's Life - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root {
-            --sage: #A3B18A;
-            --violet: #C4B0FF;
-            --cream: #FDFBF6;
-            --dark-brown: #5c4a3a;
-            --board-brown: #a67c52;
-            --tab-tan: #b08d6d;
-        }
-
-        body {
-            background-color: var(--cream);
-            font-family: 'Quicksand', sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 100px 20px 50px;
-            margin: 0;
-        }
-
-        /* [Note] The main brown frame that holds everything together */
-        .board {
-            background: var(--board-brown);
-            border: 6px solid var(--dark-brown);
-            border-radius: 60px;
-            width: 900px;
-            padding: 15px;
-            position: relative;
-        }
-
-        /* [Note] The colored tabs at the very top (Sage and Tan) */
-        .scallop-container {
-            position: absolute;
-            top: -22px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 40px;
-            box-sizing: border-box;
-        }
-        .scallop {
-            width: 80px;
-            height: 45px;
-            border: 4px solid var(--dark-brown);
-            border-radius: 0 0 40px 40px;
-        }
+        :root { --sage: #A3B18A; --violet: #C4B0FF; --cream: #FDFBF6; --dark-brown: #5c4a3a; --board-brown: #a67c52; --tab-tan: #b08d6d; }
+        body { background-color: var(--cream); font-family: 'Quicksand', sans-serif; display: flex; justify-content: center; padding: 100px 20px 50px; margin: 0; }
+        .board { background: var(--board-brown); border: 6px solid var(--dark-brown); border-radius: 60px; width: 900px; padding: 15px; position: relative; }
+        .scallop-container { position: absolute; top: -22px; width: 100%; display: flex; justify-content: space-between; padding: 0 40px; box-sizing: border-box; }
+        .scallop { width: 80px; height: 45px; border: 4px solid var(--dark-brown); border-radius: 0 0 40px 40px; }
         .scallop.tan { background: var(--tab-tan); }
         .scallop.green { background: var(--sage); }
-
-        /* [Note] The "Welcome" banner floating at the top center */
-        .welcome-header {
-            background: var(--tab-tan);
-            border: 4px solid var(--dark-brown);
-            border-radius: 30px;
-            width: 380px;
-            padding: 10px;
-            text-align: center;
-            color: white;
-            position: absolute;
-            top: -45px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-
-        /* [Note] The inner cream layer with the dashed border */
-        .inner-paper {
-            background: var(--cream);
-            border: 4px dashed white;
-            border-radius: 50px;
-            padding: 30px;
-        }
-
-        /* [Note] Navigation Bar using Icons instead of text */
-        .nav-icons {
-            display: flex;
-            gap: 45px;
-            background: white;
-            padding: 12px 45px;
-            border-radius: 30px;
-            width: fit-content;
-            margin-bottom: 25px;
-        }
+        .welcome-header { background: var(--tab-tan); border: 4px solid var(--dark-brown); border-radius: 30px; width: 380px; padding: 10px; text-align: center; color: white; position: absolute; top: -45px; left: 50%; transform: translateX(-50%); z-index: 10; }
+        .inner-paper { background: var(--cream); border: 4px dashed white; border-radius: 50px; padding: 30px; }
+        .nav-icons { display: flex; gap: 45px; background: white; padding: 12px 45px; border-radius: 30px; width: fit-content; margin-bottom: 25px; }
         .nav-icons i { font-size: 24px; color: var(--sage); }
         .nav-icons i.violet { color: var(--violet); }
-
-        /* [Note] The Sage-colored header for "home + about" */
-        .main-header {
-            background: var(--sage);
-            border-radius: 35px;
-            padding: 25px;
-            color: white;
-            position: relative;
-            margin-bottom: 25px;
-        }
+        .main-header { background: var(--sage); border-radius: 35px; padding: 25px; color: white; position: relative; margin-bottom: 25px; }
         .main-header h1 { font-family: 'Fredoka', sans-serif; font-size: 38px; margin: 0; }
-        
-        /* [Note] The dotted violet circle on the header */
-        .miffy-deco-circle {
-            position: absolute;
-            right: 25px; top: 15px;
-            width: 90px; height: 90px;
-            background: white;
-            border-radius: 50%;
-            background-image: radial-gradient(var(--violet) 3px, transparent 3px);
-            background-size: 14px 14px;
-        }
-
-        /* [Note] The 3-Column Grid setup */
-        .grid {
-            display: grid;
-            grid-template-columns: 200px 1fr 1fr;
-            gap: 20px;
-        }
-
-        /* [Note] Styling the bunny images to have thick white borders */
-        .bunny-img {
-            width: 100%;
-            border-radius: 25px;
-            border: 5px solid white;
-            margin-bottom: 15px;
-        }
-
-        /* [Note] Sidebar button styling */
-        .side-btn {
-            display: flex; align-items: center; gap: 12px;
-            background: var(--dark-brown); color: white; padding: 12px 15px;
-            margin-bottom: 10px; border-radius: 18px; text-decoration: none;
-            font-weight: bold; font-size: 14px;
-        }
+        .miffy-deco-circle { position: absolute; right: 25px; top: 15px; width: 90px; height: 90px; background: white; border-radius: 50%; background-image: radial-gradient(var(--violet) 3px, transparent 3px); background-size: 14px 14px; }
+        .grid { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 20px; }
+        .bunny-img { width: 100%; border-radius: 25px; border: 5px solid white; margin-bottom: 15px; }
+        .side-btn { display: flex; align-items: center; gap: 12px; background: var(--dark-brown); color: white; padding: 12px 15px; margin-bottom: 10px; border-radius: 18px; text-decoration: none; font-weight: bold; font-size: 14px; }
         .side-btn:hover { background: var(--violet); }
-
-        /* [Note] The info bubbles for text and lists */
-        .bubble {
-            background: #fffdfb;
-            border: 3px solid var(--violet);
-            border-radius: 25px;
-            padding: 20px;
-            font-size: 15px;
-            color: var(--dark-brown);
-        }
-        .label-row {
-            display: flex; align-items: center; gap: 10px;
-            font-family: 'Fredoka', sans-serif; font-size: 22px;
-            color: var(--sage); margin-bottom: 12px;
-        }
-        .label-circle {
-            background: var(--sage); color: white; width: 32px; height: 32px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        }
-
+        .bubble { background: #fffdfb; border: 3px solid var(--violet); border-radius: 25px; padding: 20px; font-size: 15px; color: var(--dark-brown); }
+        .label-row { display: flex; align-items: center; gap: 10px; font-family: 'Fredoka', sans-serif; font-size: 22px; color: var(--sage); margin-bottom: 12px; }
+        .label-circle { background: var(--sage); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .footer { text-align: center; color: white; font-family: 'Fredoka', sans-serif; font-size: 24px; margin-top: 20px; }
     </style>
 </head>
 <body>
-
 <div class="board">
     <div class="scallop-container">
         <div class="scallop tan"></div><div class="scallop green"></div>
         <div class="scallop tan" style="margin-left: auto;"></div><div class="scallop green"></div>
     </div>
-
     <div class="welcome-header">
         <h2 style="margin:0; font-family:'Fredoka'">Welcome!</h2>
         <span style="font-size:14px; opacity:0.9;">Zara’s life ♪(´▽｀ )</span>
     </div>
-
     <div class="inner-paper">
         <div class="nav-icons">
             <i class="fa-solid fa-user"></i>
             <i class="fa-solid fa-book-open violet"></i>
             <i class="fa-solid fa-bars violet"></i>
         </div>
-
         <div class="main-header">
             <div class="miffy-deco-circle"></div>
             <h1>ε home + about з</h1>
             <p style="margin: 10px 0;">Have a look around! DM @user for any questions.</p>
-            <div style="display:flex; gap:10px;">
-                <span style="background:white; color:var(--sage); padding:5px 15px; border-radius:12px; font-weight:bold; font-size:11px;">status: OPEN</span>
-                <span style="background:white; color:var(--sage); padding:5px 15px; border-radius:12px; font-weight:bold; font-size:11px;">last updated: 0/00/00</span>
-            </div>
         </div>
-
         <div class="grid">
             <div>
-                <img src="IMG_2765.jpeg" class="bunny-img" alt="Star Bunny">
-                <img src="IMG_2766.jpeg" class="bunny-img" alt="Flower Bunny">
-                
-                <a href="music.html" class="side-btn"><i class="fa-solid fa-music"></i> Music</a>
-                <a href="crochet.html" class="side-btn"><i class="fa-solid fa-scissors"></i> Crochet</a>
-                <a href="plushies.html" class="side-btn"><i class="fa-solid fa-paw"></i> Plushies</a>
+                <img src="IMG_2765.jpeg" class="bunny-img">
+                <img src="IMG_2766.jpeg" class="bunny-img">
+                <a href="#" class="side-btn"><i class="fa-solid fa-music"></i> Music</a>
+                <a href="#" class="side-btn"><i class="fa-solid fa-scissors"></i> Crochet</a>
             </div>
-
             <div>
-                <div class="label-row"><div class="label-circle">a</div> Title Here ✨</div>
-                <div class="bubble">
-                    This is a website I made for fun about my interests and I thought it would be nice to explain my interests and I got bored :).
-                </div>
+                <div class="label-row"><div class="label-circle">a</div> You found me! ✨</div>
+                <div class="bubble">This is a website I made for fun about my interests :).</div>
                 <img src="IMG_2764.jpeg" class="bunny-img" style="margin-top:20px;">
             </div>
-
             <div>
-                <img src="IMG_2767.jpeg" class="bunny-img" style="margin-bottom:20px;">
-                
-                <div class="label-row"><div class="label-circle" style="background:var(--violet)">b</div> Title Here 🌸</div>
+                <img src="IMG_2767.jpeg" class="bunny-img">
+                <div class="label-row"><div class="label-circle" style="background:var(--violet)">b</div> Interests 🌸</div>
                 <div class="bubble" style="border-color: var(--sage);">
                     <ul style="padding-left: 20px; margin: 0; font-weight: 600;">
-                        <li>f1</li>
-                        <li>books</li>
-                        <li>myself</li>
-                        <li>food</li>
-                        <li>plushies</li>
-                        <li>idk</li>
+                        <li>F1 & Books</li>
+                        <li>Plushies</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="footer">carrd by xiu.carrd.co</div>
+    <div class="footer">hehe</div>
 </div>
 
 <script>
-    // [Note] Changed to localStorage to match your fixed login.html
-    if (localStorage.getItem('zara_auth') !== 'true') {
+    // This script MUST match the login.html key exactly
+    if (localStorage.getItem('zara_access_2026') !== 'true') {
         window.location.href = "login.html";
     }
 </script>
-
 </body>
 </html>
