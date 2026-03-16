@@ -5,18 +5,42 @@
     <title>Login - Zara’s Life</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #FDFBF6; font-family: 'Quicksand', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .login-box { background: white; border: 4px dashed #C4B0FF; border-radius: 30px; padding: 40px; text-align: center; width: 320px; box-shadow: 0 8px 20px rgba(163, 177, 138, 0.2); }
-        h2 { font-family: 'Fredoka', sans-serif; color: #3a2b5c; margin-bottom: 10px; }
-        input { width: 85%; padding: 12px; border-radius: 15px; border: 2px solid #A3B18A; margin-bottom: 15px; outline: none; text-align: center; }
-        button { background: #A3B18A; color: white; border: none; padding: 12px 35px; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 16px; }
+        body { 
+            background: #FDFBF6; /* Cream */
+            font-family: 'Quicksand', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .login-box { 
+            background: white; 
+            border: 4px dashed #C4B0FF; /* Violet */
+            border-radius: 30px; 
+            padding: 40px; 
+            text-align: center; 
+            width: 320px; 
+            box-shadow: 0 8px 20px rgba(163, 177, 138, 0.1); 
+        }
+        h2 { font-family: 'Fredoka', sans-serif; color: #A3B18A; margin-bottom: 10px; }
+        input { 
+            width: 85%; padding: 12px; border-radius: 15px; 
+            border: 2px solid #A3B18A; /* Sage */
+            margin-bottom: 15px; outline: none; text-align: center; 
+        }
+        button { 
+            background: #A3B18A; color: white; border: none; 
+            padding: 12px 35px; border-radius: 15px; font-weight: bold; 
+            cursor: pointer; transition: 0.3s; font-size: 16px; 
+        }
         button:hover { background: #C4B0FF; transform: scale(1.05); }
     </style>
 </head>
 <body>
     <div class="login-box">
-        <h2>You Found Me!</h2>
-        <p>Zara’s Life ♪(´▽｀)</p>
+        <h2>Welcome Back!</h2>
+        <p style="color: #3a2b5c;">Zara’s Life ♪(´▽｀)</p>
         <input type="password" id="passwordInput" placeholder="Enter Password">
         <br>
         <button onclick="login()">Enter</button>
@@ -26,14 +50,12 @@
         function login() {
             const pass = document.getElementById('passwordInput').value;
             if(pass === "zara") {
-                // Setting a unique key to prevent the loop
                 localStorage.setItem('zara_access_2026', 'true'); 
                 window.location.href = "index.html"; 
             } else {
-                alert("Incorrect password! Try again 🌸");
+                alert("Incorrect password! 🌸");
             }
         }
-        // Allows pressing "Enter" to login
         document.getElementById("passwordInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") { login(); }
         });
