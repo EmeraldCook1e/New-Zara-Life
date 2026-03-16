@@ -1,29 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <style>
-    body { background-color: #fff8f0; font-family: sans-serif; text-align: center; padding-top: 100px; }
-    input { padding: 10px; margin: 5px; }
-    button { padding: 10px 20px; background-color: #8a2be2; color: white; border: none; cursor: pointer; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - My Website</title>
+
+<!-- Import Google Fonts to match index.html -->
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* Page background and fonts */
+body {
+  background:#f7efe3; /* cream background */
+  font-family:'Quicksand', sans-serif;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* Login box */
+.wrapper {
+  background:#ffffff;
+  border:6px solid #bfa6ff; /* soft purple border */
+  border-radius:30px;
+  padding:40px 30px;
+  text-align:center;
+  width:350px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Header text */
+h2 {
+  font-family:'Fredoka', sans-serif;
+  font-size:28px;
+  color:#3a2b5c;
+  margin-bottom:15px;
+}
+
+/* Password input */
+input[type="password"] {
+  padding:12px;
+  width:80%;
+  margin:10px 0;
+  border-radius:15px;
+  border:2px solid #d6c8ff;
+  font-size:16px;
+  text-align:center;
+}
+
+/* Login button */
+button {
+  padding:12px 25px;
+  background:#8a2be2; /* purple button */
+  color:white;
+  border:none;
+  border-radius:15px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
+  margin-top:10px;
+}
+
+/* Button hover effect */
+button:hover {
+  background:#6f1db5;
+}
+
+/* Optional small text */
+p {
+  color:#6b5a95;
+  font-size:14px;
+  margin-top:15px;
+}
+</style>
 </head>
+
 <body>
+<div class="wrapper">
   <h2>Enter Password to Access Site</h2>
   <input type="password" id="password" placeholder="Password">
+  <br>
   <button onclick="checkPassword()">Enter</button>
+  <p>Only authorized users can access this page.</p>
+</div>
 
-  <script>
-    function checkPassword() {
-      const pw = document.getElementById('password').value;
-      const correctPw = "Zara1234"; // <-- Change this to your password
-      if(pw === correctPw) {
-        window.location.href = "index.html"; // <-- Your main page
-      } else {
-        alert("Incorrect password!");
-      }
-    }
-  </script>
+<script>
+function checkPassword() {
+  const pw = document.getElementById('password').value;
+  const correctPw = "Zara1234"; // <-- Replace with your password
+  if(pw === correctPw) {
+    sessionStorage.setItem('loggedIn','true'); // remember login
+    window.location.href = "index.html";       // redirect to main page
+  } else {
+    alert("Incorrect password!");
+  }
+}
+</script>
 </body>
 </html>
